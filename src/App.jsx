@@ -1,11 +1,21 @@
-
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import Default_layout from "./layouts/Default_layout"
+import HomePage from "../pages/HomePage"
+import FilmPage from "../pages/FilmPage"
 
 function App() {
 
 
   return (
     <>
-      <h1>ciao mondo</h1>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Default_layout />}>
+            <Route index element={<HomePage />} />
+            <Route path="films/:id" element={<FilmPage />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
 
     </>
   )

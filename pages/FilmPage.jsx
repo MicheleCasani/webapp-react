@@ -50,7 +50,7 @@ const FilmPage = () => {
                         <h3>Le recensioni della community</h3>
                     </div>
                 </div>
-                {reviews.map((review) => (
+                {film.abstract.map((review) => (
                     <div key={`review-${review.id}`}>
                         <FilmReview review={review} />
                     </div>

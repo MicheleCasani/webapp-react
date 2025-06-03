@@ -1,6 +1,6 @@
 import React from 'react'
 import FilmReview from '../components/FilmReview'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 
 
@@ -25,57 +25,30 @@ const reviewsArray = [
     },
 ];
 
-const FilmsArray = [
-    {
-        id: 1,
-        title: "Titolo 1",
-        author: "regista 1",
-        abstract: "Lorem ipsum dolor sit amet",
-        image: "https://picsum.photos/700/500",
-    },
-    {
-        id: 2,
-        title: "Titolo 2",
-        author: "regista 2",
-        abstract: "Lorem ipsum dolor sit amet",
-        image: "https://picsum.photos/700/500",
-    },
-    {
-        id: 3,
-        title: "Titolo 3",
-        author: "regista 3",
-        abstract: "Lorem ipsum dolor sit amet",
-        image: "https://picsum.photos/700/500",
-    },
-    {
-        id: 4,
-        title: "Titolo 4",
-        author: "regista 4",
-        abstract: "Lorem ipsum dolor sit amet",
-        image: "https://picsum.photos/700/500",
-    },
-    {
-        id: 5,
-        title: "Titolo 5",
-        author: "regista 5",
-        abstract: "Lorem ipsum dolor sit amet",
-        image: "https://picsum.photos/700/500",
-    },
-    {
-        id: 6,
-        title: "Titolo 6",
-        author: "regista 6",
-        abstract: "Lorem ipsum dolor sit amet",
-        image: "https://picsum.photos/700/500",
-    },
-];
+
 
 const FilmPage = () => {
 
     const [reviews, setreviews] = useState(reviewsArray)
 
     const { id } = useParams();
-    const film = FilmsArray.find(f => f.id === parseInt(id));
+
+    const [film, setFilm] = useState(null);
+
+    const fetchFilms = () => {
+        axios
+            .get(`http://localhost:3000/movies/${id}`)
+            .then((resp) => {
+                setFilm(resp.data)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    };
+
+    useEffect(() => {
+        fetchFilms();
+    }, []);
 
     return (
         <>

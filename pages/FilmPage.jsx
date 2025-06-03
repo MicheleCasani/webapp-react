@@ -2,38 +2,14 @@ import React from 'react'
 import FilmReview from '../components/FilmReview'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
-
-
-const reviewsArray = [
-    {
-        id: 1,
-        text: "Lorem ipsum dolor sit amet in recensionem",
-        author: "Autore 1",
-        vote: 3
-    },
-    {
-        id: 2,
-        text: "Lorem ipsum dolor sit amet in recensionem",
-        author: "Autore 2",
-        vote: 4
-    },
-    {
-        id: 3,
-        text: "Lorem ipsum dolor sit amet in recensionem",
-        author: "Autore 3",
-        vote: 5
-    },
-];
-
-
+import axios from 'axios';
 
 const FilmPage = () => {
 
-    const [reviews, setreviews] = useState(reviewsArray)
 
     const { id } = useParams();
 
-    const [film, setFilm] = useState(null);
+    const [film, setFilm] = useState({});
 
     const fetchFilms = () => {
         axios
@@ -75,7 +51,9 @@ const FilmPage = () => {
                     </div>
                 </div>
                 {reviews.map((review) => (
-                    <FilmReview review={review} key={`review-${review.id}`} />
+                    <div key={`review-${review.id}`}>
+                        <FilmReview review={review} />
+                    </div>
                 ))}
             </div>
         </>

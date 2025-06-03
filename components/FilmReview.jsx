@@ -4,7 +4,7 @@ import React from 'react'
 
 const FilmReview = ({ review }) => {
 
-    const { text, author, vote } = review;
+    const { text, name, vote } = review;
 
     return (
 
@@ -12,7 +12,7 @@ const FilmReview = ({ review }) => {
             <div className="card p-4">
                 <p>Recensione: {text}</p>
                 <p>Voto: {vote}</p>
-                <p>Utente: {author}</p>
+                <p>Utente: {name}</p>
             </div>
         </div>
 

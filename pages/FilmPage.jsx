@@ -15,11 +15,13 @@ const FilmPage = () => {
         axios
             .get(`http://localhost:3000/movies/${id}`)
             .then((resp) => {
-                setFilm(resp.data)
+                console.log("Dati ricevuti:", resp.data);  // Controlla l'intero oggetto
+                console.log("Percorso immagine:", resp.data.image);  // Stampa l'immagine corretta
+                setFilm(resp.data);
             })
             .catch((err) => {
-                console.log(err)
-            })
+                console.log(err);
+            });
     };
 
     useEffect(() => {
@@ -50,7 +52,7 @@ const FilmPage = () => {
                         <h3>Le recensioni della community</h3>
                     </div>
                 </div>
-                {film.abstract.map((review) => (
+                {film.reviews?.map((review) => (
                     <div key={`review-${review.id}`}>
                         <FilmReview review={review} />
                     </div>

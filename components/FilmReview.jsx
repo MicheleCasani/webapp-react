@@ -10,9 +10,9 @@ const FilmReview = ({ review }) => {
 
         <div className="col-12">
             <div className="card p-4">
+                <p>Utente: {name}</p>
                 <p>Recensione: {text}</p>
                 <p>Voto: {vote}</p>
-                <p>Utente: {name}</p>
             </div>
         </div>
 

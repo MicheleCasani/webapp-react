@@ -59,9 +59,11 @@ const FilmPage = () => {
                     </div>
                 ))}
             </div>
-            <FormReview
-                movie_id={film.id}
-                reloadReview={fetchFilms} />
+            <div className='mb-5'>
+                <FormReview
+                    movie_id={film.id}
+                    reloadReview={fetchFilms} />
+            </div>
         </>
     )
 }

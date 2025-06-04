@@ -32,54 +32,55 @@ const FormReview = ({ movie_id, reloadReview }) => {
                 <div className="card-header">
                     <h1>Aggiungi la tua recensione</h1>
                 </div>
-            </div>
-            <div className="card-body">
-                <form onSubmit={handleSubmit}>
-                    <div className="form-group">
-                        <label htmlFor="" className='control-label'>
-                            Nome:
-                        </label>
-                        <input
-                            type="text"
-                            className='form-control'
-                            name='name'
-                            placeholder='nome'
-                            required
-                            value={formData.name}
-                            onChange={setFieldvalue}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="" className='control-label'>
-                            Voto:
-                        </label>
-                        <input
-                            type="number"
-                            className='form-control'
-                            name='vote'
-                            placeholder='vote'
-                            required
-                            value={formData.vote}
-                            onChange={setFieldvalue}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="" className='control-label'>
-                            Testo:
-                        </label>
-                        <textarea
-                            name="text"
-                            id="text"
-                            className='form-control'
-                            value={formData.text}
-                            onChange={setFieldvalue}
-                        >
-                        </textarea>
+
+                <div className="card-body">
+                    <form onSubmit={handleSubmit}>
                         <div className="form-group">
-                            <button className='btn btn-primary' type='submit'>Salva recensione</button>
+                            <label htmlFor="" className='control-label'>
+                                Nome:
+                            </label>
+                            <input
+                                type="text"
+                                className='form-control'
+                                name='name'
+                                placeholder='nome'
+                                required
+                                value={formData.name}
+                                onChange={setFieldvalue}
+                            />
                         </div>
-                    </div>
-                </form>
+                        <div className="form-group">
+                            <label htmlFor="" className='control-label'>
+                                Voto:
+                            </label>
+                            <input
+                                type="number"
+                                className='form-control'
+                                name='vote'
+                                placeholder='vote'
+                                required
+                                value={formData.vote}
+                                onChange={setFieldvalue}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="" className='control-label'>
+                                Testo:
+                            </label>
+                            <textarea
+                                name="text"
+                                id="text"
+                                className='form-control'
+                                value={formData.text}
+                                onChange={setFieldvalue}
+                            >
+                            </textarea>
+                            <div className="form-group mt-2">
+                                <button className='btn btn-primary' type='submit'>Salva recensione</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </>
     )

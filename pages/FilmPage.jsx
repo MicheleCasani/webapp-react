@@ -3,6 +3,7 @@ import FilmReview from '../components/FilmReview'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import FormReview from '../components/FormReview';
 
 const FilmPage = () => {
 
@@ -58,6 +59,9 @@ const FilmPage = () => {
                     </div>
                 ))}
             </div>
+            <FormReview
+                movie_id={film.id}
+                reloadReview={fetchFilms} />
         </>
     )
 }

@@ -54,6 +54,8 @@ const FormReview = ({ movie_id, reloadReview }) => {
                                 Voto:
                             </label>
                             <input
+                                min={0}
+                                max={5}
                                 type="number"
                                 className='form-control'
                                 name='vote'

@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import FormReview from '../components/FormReview';
+import { useContext } from 'react';
+import GlobalContext from '../src/contexts/globalContext';
 
 const FilmPage = () => {
 
@@ -11,14 +13,18 @@ const FilmPage = () => {
     const { id } = useParams();
 
     const [film, setFilm] = useState({});
-
+    const { setIsLoading } = useContext(GlobalContext)
     const fetchFilms = () => {
+        setIsLoading(true);
         axios
             .get(`http://localhost:3000/movies/${id}`)
             .then((resp) => {
                 console.log("Dati ricevuti:", resp.data);  // Controlla l'intero oggetto
                 console.log("Percorso immagine:", resp.data.image);  // Stampa l'immagine corretta
-                setFilm(resp.data);
+                setTimeout(() => {
+                    setFilm(resp.data);
+                    setIsLoading(false);
+                }, 1000);
             })
             .catch((err) => {
                 console.log(err);

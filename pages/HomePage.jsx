@@ -1,19 +1,23 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import FilmCard from '../components/FilmCard'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import GlobalContext from '../src/contexts/globalContext';
 
 
 const HomePage = () => {
 
     const [films, setFilms] = useState([]);
-
+    const { setIsLoading } = useContext(GlobalContext)
     const fetchMovies = () => {
-
+        setIsLoading(true);
         axios
             .get("http://localhost:3000/movies/")
             .then((resp) => {
-                setFilms(resp.data)
+                setTimeout(() => {
+                    setFilms(resp.data);
+                    setIsLoading(false);
+                }, 1000);
             })
             .catch((err) => {
                 console.log(err)
@@ -27,6 +31,7 @@ const HomePage = () => {
 
     return (
         <>
+
             <h1 className='text-primary'>Films Blog</h1>
             <h2>
                 <i>Il blog sui film più bello che ci sia</i>
